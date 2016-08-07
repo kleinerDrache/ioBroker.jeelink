@@ -258,19 +258,19 @@ function main() {
                         var tmpp=tmp.splice(2,6);       // es werden die vorderen Blöcke (0,1,2) entfernt
                         adapter.log.debug('splice       : '+ tmpp);
                         var buf = new Buffer(tmpp);
-                        adapter.log.debug('Sensor ID    : '+ (buf.readIntLE(0));
+                        adapter.log.debug('Sensor ID    : '+ temp[0];
                         adapter.log.debug('Type         : '+ ((buf.readIntLE(1) & 0x70) >> 4);
                         adapter.log.debug('NewBattery   : '+ ((buf.readIntLE(1) & 0x80) >> 7);       // wenn "100000xx" dann NewBatt # xx = SensorType 1 oder 2
                         adapter.log.debug('Temperatur   : '+ ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10);
                         adapter.log.debug('Humidty      : '+ (buf.readIntLE(4) & 0x7f);
                         adapter.log.debug('LowBattery   : '+ ((buf.readIntLE(4) & 0x80) >> 7);       // Hier muss noch "incl. WeakBatteryFlag" ausgewertet werden
                         // Werte schreiben
-                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.lowBatt', {val: ((buf.readIntLE(4) & 0x80) >> 7), ack: true}); 
-                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.newBatt', {val: ((buf.readIntLE(1) & 0x80) >> 7), ack: true}); 
-                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.temp', {val: ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10), ack: true});
-                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.humid',{val: (buf.readIntLE(4) & 0x7f), ack: true});
+                        adapter.setState('LaCrosse_'+ temp[0] +'.lowBatt', {val: ((buf.readIntLE(4) & 0x80) >> 7), ack: true}); 
+                        adapter.setState('LaCrosse_'+ temp[0] +'.newBatt', {val: ((buf.readIntLE(1) & 0x80) >> 7), ack: true}); 
+                        adapter.setState('LaCrosse_'+ temp[0] +'.temp', {val: ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10), ack: true});
+                        adapter.setState('LaCrosse_'+ temp[0] +'.humid',{val: (buf.readIntLE(4) & 0x7f), ack: true});
                     }
-/* Eine weitere Abfrage ist nur dann notwendig wenn andere Datensätze gelesen werden 
+                    /* Eine weitere Abfrage ist nur dann notwendig wenn andere Datensätze gelesen werden 
 
                     else if(tmp[2]=='21' || tmp[2]=='22'){
                         //we are expecting data in form \"OK nodeid data1 data2 etc
