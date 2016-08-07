@@ -258,12 +258,12 @@ function main() {
                         var tmpp=tmp.splice(2,6);       // es werden die vorderen Blöcke (0,1,2) entfernt
                         adapter.log.debug('splice       : '+ tmpp);
                         var buf = new Buffer(tmpp);
-                        adapter.log.debug('Sensor ID    : '+ (buf.readIntLE(0)));
+                        adapter.log.debug('Sensor ID    : '+ (buf.readIntLE(0));
                         adapter.log.debug('Type         : '+ ((buf.readIntLE(1) & 0x70) >> 4);
                         adapter.log.debug('NewBattery   : '+ ((buf.readIntLE(1) & 0x80) >> 7);       // wenn "100000xx" dann NewBatt # xx = SensorType 1 oder 2
                         adapter.log.debug('Temperatur   : '+ ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10);
                         adapter.log.debug('Humidty      : '+ (buf.readIntLE(4) & 0x7f);
-                        adapter.log.debug('LowBattery   : '+ ((buf.readIntLE(4) & 0x80) >> 7));       // Hier muss noch "incl. WeakBatteryFlag" ausgewertet werden
+                        adapter.log.debug('LowBattery   : '+ ((buf.readIntLE(4) & 0x80) >> 7);       // Hier muss noch "incl. WeakBatteryFlag" ausgewertet werden
                         // Werte schreiben
                         adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.lowBatt', {val: ((buf.readIntLE(4) & 0x80) >> 7), ack: true}); 
                         adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.newBatt', {val: ((buf.readIntLE(1) & 0x80) >> 7), ack: true}); 
