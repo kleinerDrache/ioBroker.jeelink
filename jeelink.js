@@ -107,30 +107,30 @@ function main() {
             adapter.setObject('LaCrosse_' + anz + '.batt', {
                 type: 'state',
                 common: {
-                    "name": "Battery",
-                    "type": "number",
-                    "unit": "V",
+                    "name": "Battery Low",
+                    "type": "info",
+                    "unit": "",
                     "min": 0,
-                    "max": 4,
+                    "max": 1,
                     "read": true,
                     "write": false,
-                    "role": "value.battery",
-                    "desc": "Battery"
+                    "role": "value.lowBatt",
+                    "desc": "Battery Low"
                 },
                 native: {}
             });
             adapter.setObject('LaCrosse_' + anz + '.type', {
                 type: 'state',
                 common: {
-                    "name": "Type",
-                    "type": "number",
+                    "name": "Battery New",
+                    "type": "info",
                     "unit": "",
-                    "min": 1,
-                    "max": 2,
+                    "min": 0,
+                    "max": 1,
                     "read": true,
                     "write": false,
-                    "role": "value.type",
-                    "desc": "SensorType"
+                    "role": "value.newBatt",
+                    "desc": "Battery New"
                 },
                 native: {}
             });
@@ -251,24 +251,24 @@ function main() {
                     // |  |------------------- [1]fix "9"
                     // |---------------------- [0]fix "OK"
 
-                var tmp = data.split(' ');
+                 var tmp = data.split(' ');
                 if(tmp[0]==='OK'){      // Wenn ein Datensatz sauber gelesen wurde
                     if(tmp[1]=='9'){    // Für jeden Datensatz mit dem fixen Eintrag 9
                                         // somit werden alle SendorIDs bearbeitet
                         var tmpp=tmp.splice(2,6);       // es werden die vorderen Blöcke (0,1,2) entfernt
                         adapter.log.debug('splice       : '+ tmpp);
                         var buf = new Buffer(tmpp);
-                        adapter.log.debug('Sensor ID    : '+ temp[0];
-                        adapter.log.debug('Type         : '+ ((buf.readIntLE(1) & 0x70) >> 4);
-                        adapter.log.debug('NewBattery   : '+ ((buf.readIntLE(1) & 0x80) >> 7);       // wenn "100000xx" dann NewBatt # xx = SensorType 1 oder 2
-                        adapter.log.debug('Temperatur   : '+ ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10);
-                        adapter.log.debug('Humidty      : '+ (buf.readIntLE(4) & 0x7f);
-                        adapter.log.debug('LowBattery   : '+ ((buf.readIntLE(4) & 0x80) >> 7);       // Hier muss noch "incl. WeakBatteryFlag" ausgewertet werden
+                        adapter.log.debug('Sensor ID    : '+ (buf.readIntLE(0)));
+                        adapter.log.debug('Type         : '+ ((buf.readIntLE(1) & 0x70) >> 4));
+                        adapter.log.debug('NewBattery   : '+ ((buf.readIntLE(1) & 0x80) >> 7));       // wenn "100000xx" dann NewBatt # xx = SensorType 1 oder 2
+                        adapter.log.debug('Temperatur   : '+ ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10));
+                        adapter.log.debug('Humidty      : '+ (buf.readIntLE(4) & 0x7f));
+                        adapter.log.debug('LowBattery   : '+ ((buf.readIntLE(4) & 0x80) >> 7));       // Hier muss noch "incl. WeakBatteryFlag" ausgewertet werden
                         // Werte schreiben
-                        adapter.setState('LaCrosse_'+ temp[0] +'.lowBatt', {val: ((buf.readIntLE(4) & 0x80) >> 7), ack: true}); 
-                        adapter.setState('LaCrosse_'+ temp[0] +'.newBatt', {val: ((buf.readIntLE(1) & 0x80) >> 7), ack: true}); 
-                        adapter.setState('LaCrosse_'+ temp[0] +'.temp', {val: ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10), ack: true});
-                        adapter.setState('LaCrosse_'+ temp[0] +'.humid',{val: (buf.readIntLE(4) & 0x7f), ack: true});
+                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.lowBatt', {val: ((buf.readIntLE(4) & 0x80) >> 7), ack: true});
+                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.newBatt', {val: ((buf.readIntLE(1) & 0x80) >> 7), ack: true});
+                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.temp', {val: ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10), ack: true});
+                        adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.humid', {val: (buf.readIntLE(4) & 0x7f), ack: true});
                     }
                     /* Eine weitere Abfrage ist nur dann notwendig wenn andere Datensätze gelesen werden 
 
