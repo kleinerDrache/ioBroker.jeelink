@@ -11,7 +11,8 @@
             "jeelink",
             "openenergy",
             "RFM",
-            "emonTH"
+            "emonTH",
+            "LaCrosse"
         ],
         "type": "hardware",
         "icon": "jeelab_logo.png",
@@ -23,28 +24,12 @@
         "serialport": "/dev/ttyUSB0",
         "baudrate": 57600,
         "sensors": {
-            "19": {
+            "12": {
                 "room": [
-                    "Balkon"
+                    "Garten"
                 ],
                 "stype": [
-                    "emonTH"
-                ]
-            },
-            "21": {
-                "room": [
-                    "Bad unten"
-                ],
-                "stype": [
-                    "waterMote"
-                ]
-            },
-            "22": {
-                "room": [
-                    "Bad oben"
-                ],
-                "stype": [
-                    "waterMote"
+                    "LaCrosse"
                 ]
             }
         },
