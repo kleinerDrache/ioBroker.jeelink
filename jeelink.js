@@ -5,10 +5,7 @@
 
 var serialport = require("serialport");
 var SerialPort = serialport.SerialPort; // localize object constructor
-var sp = new SerialPort("/dev/ttyUSB0", {
-    baudrate:57600,
-    parser: serialport.parsers.readline('\r\n')
-});
+//var sp = new SerialPort("/dev/ttyUSB0", {baudrate:57600, parser: serialport.parsers.readline('\r\n')});
 
 
 // you have to require the utils module and call adapter function
@@ -104,37 +101,26 @@ function main() {
                 },
                 native: {}
             });
-            adapter.setObject('LaCrosse_' + anz + '.batt', {
+            adapter.setObject('LaCrosse_' + anz + '.lowBatt', {
                 type: 'state',
                 common: {
                     "name": "Battery Low",
-                    "type": "info",
-                    "unit": "",
-                    "min": 0,
-                    "max": 1,
-                    "read": true,
-                    "write": false,
+                    "type": "boolean",
                     "role": "value.lowBatt",
-                    "desc": "Battery Low"
                 },
                 native: {}
             });
-            adapter.setObject('LaCrosse_' + anz + '.type', {
+            adapter.setObject('LaCrosse_' + anz + '.newBatt', {
                 type: 'state',
                 common: {
                     "name": "Battery New",
-                    "type": "info",
-                    "unit": "",
-                    "min": 0,
-                    "max": 1,
-                    "read": true,
-                    "write": false,
+                    "type": "boolean",
                     "role": "value.newBatt",
-                    "desc": "Battery New"
                 },
                 native: {}
             });
-        }else if(obj[anz].stype=="waterMote"){
+        }
+	else if(obj[anz].stype=="waterMote"){
             adapter.setObject('waterMote_' + anz, {
                 type: 'channel',
                 common: {
@@ -313,3 +299,4 @@ function main() {
     // same thing, but the state is deleted after 30s (getState will return null afterwards)
     adapter.setState('testVariable', {val: true, ack: true, expire: 30});
 }
+
