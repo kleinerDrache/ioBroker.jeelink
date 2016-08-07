@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "jeelink",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "title": "jeelink adapter",
         "desc": "ioBroker jeelink Adapter",
         "platform": "Javascript/Node.js",
@@ -16,8 +16,8 @@
         ],
         "type": "hardware",
         "icon": "jeelab_logo.png",
-        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.jeelink/master/admin/jeelab_logo.png",
-        "readme": "https://github.com/foxthefox/ioBroker.jeelink/master/README.md",
+        "extIcon": "https://raw.githubusercontent.com/kleinerDrache/ioBroker.jeelink/master/admin/jeelab_logo.png",
+        "readme": "https://github.com/kleinerDrache/ioBroker.Lacrosse/blob/master/README.md",
         "loglevel": "debug"
     },
     "native": {

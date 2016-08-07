@@ -5,7 +5,7 @@
 
 var serialport = require("serialport");
 var SerialPort = serialport.SerialPort; // localize object constructor
-//var sp = new SerialPort("/dev/ttyUSB0", {baudrate:57600, parser: serialport.parsers.readline('\r\n')});
+var sp = new SerialPort("/dev/ttyUSB0", {baudrate:57600, parser: serialport.parsers.readline('\r\n')});
 
 
 // you have to require the utils module and call adapter function

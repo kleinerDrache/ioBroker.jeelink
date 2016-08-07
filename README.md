@@ -3,13 +3,19 @@
 =================
 
 This is an adapter for ioBroker to integrate RFM12B/RFM69 via Jeelink.
-The jeelink can be used with the preloaded software (rfmdemo).
+The JeeLink Firmware iss locatet in Admin Dir. Flash on Linux with the Following Command on Console in the Firmware Dir:
+
+apt-get install avrdude
+
+avrdude -p atmega328P -c arduino -P [PORT] -D -U flash:w:JeeLink_LaCrosse.hex 2>flash.log
+
+for port set your Jeelink USB device.
 
 Installation:
 
-npm install https://github.com/foxthefox/ioBroker.jeelink/tarball/master --production
+npm install https://github.com/kleinerDrache/ioBroker.jeelink/tarball/master --production
 
-Settings:
+Settings:(fix)
 - USB port of JeelinkAdapter usually /dev/ttyACME
 - Serial Speed usually 57600 Baud
 
@@ -20,12 +26,13 @@ to be done in io-package.json
 - define the type of sensor
 
 TODO:
-
+Changelog:
+0.0.2
+Adding LowBat Value
+Adding NewBat Value
 
 Changelog:
 0.0.1
-working with 3 sensors
-
 
 ## License
 The MIT License (MIT)

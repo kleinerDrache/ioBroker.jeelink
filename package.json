@@ -1,9 +1,9 @@
 {
   "name": "iobroker.jeelink",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ioBroker jeelink Adapter",
   "author": {
-    "name": "@@foxthefox@@",
+    "name": "@@kleinerDrache@@",
     "email": "@@email@@"
   },
   "contributors": [
@@ -12,12 +12,12 @@
       "email": "@@email@@"
     }
   ],
-  "homepage": "https://github.com/foxthefox/ioBroker.jeelink",
+  "homepage": "https://github.com/kleinerDrache/ioBroker.jeelink",
   "license": "MIT",
-  "keywords": ["ioBroker", "jeelink", "RFM", "openenergymonitor" ],
+  "keywords": ["ioBroker", "jeelink", "RFM", "LaCrosse" ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxthefox/ioBroker.jeelink"
+    "url": "https://github.com/kleinerDrache/ioBroker.jeelink"
   },
   "dependencies": {
     "serialport": "2.0.3"
