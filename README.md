@@ -13,7 +13,7 @@ for port set your Jeelink USB device.
 
 Installation:
 
-npm install https://github.com/kleinerDrache/ioBroker.jeelink/tarball/master --production
+npm install https://github.com/kleinerDrache/ioBroker.LaCrosse/tarball/master --production
 
 Settings:(fix)
 - USB port of JeelinkAdapter usually /dev/ttyACME
