@@ -1,7 +1,7 @@
 {
   "name": "iobroker.LaCrosse",
   "version": "0.0.2",
-  "description": "ioBroker Jeelink LaCrosse Adapter",
+  "description": "ioBroker LaCrosse Adapter",
   "author": {
     "name": "@@kleinerDrache@@",
     "email": "@@timlieber75@gmail.com@@"
@@ -34,8 +34,8 @@
       "grunt-exec": "^0.4.6"
   },
   "bugs": {
-    "url": "https://github.com/foxthefox/ioBroker.Lacrosse/issues"
+    "url": "https://github.com/kleinerDrache/ioBroker.Lacrosse/issues"
   },
-  "main": "jeelink.js",
+  "main": "LaCrosse.js",
   "readmeFilename": "README.md"
 }
