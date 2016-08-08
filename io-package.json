@@ -1,9 +1,9 @@
 {
     "common": {
-        "name":                     "Jeelink Lacrosse",
+        "name":                     "Lacrosse",
         "version":                  "0.0.2",
-        "title":                    "Jeelink Lacrosse Adapter",
-        "desc":                     "ioBroker Jeelink Lacrosse Adapter",
+        "title":                    "Lacrosse Adapter",
+        "desc":                     "ioBroker Lacrosse Adapter",
         "platform":                 "Javascript/Node.js",
         "mode":                     "daemon",
         "loglevel":                 "info",
