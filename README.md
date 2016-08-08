@@ -1,5 +1,5 @@
 ![Logo](admin/jeelab_logo.png)
-# ioBroker.Lacrosse
+# ioBroker.LaCrosse
 ===================
 
 This is an adapter for ioBroker to integrate RFM12B/RFM69 via Jeelink.
@@ -28,8 +28,8 @@ to be done in io-package.json
 TODO:
 Changelog:
 0.0.2
-Adding LowBat Value
-Adding NewBat Value
+- Adding LowBat Value
+- Adding NewBat Value
 
 Changelog:
 0.0.1
