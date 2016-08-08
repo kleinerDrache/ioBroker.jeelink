@@ -22,7 +22,6 @@ Settings:(fix)
 Configuration:
 to be done in io-package.json
 - define sensor address
-- define the room
 - define the type of sensor
 
 TODO:
