@@ -1,16 +1,16 @@
 {
     "common": {
-        "name":                     "jeelink",
+        "name":                     "Jeelink Lacrosse",
         "version":                  "0.0.2",
-        "title":                    "jeelink adapter",
-        "desc":                     "ioBroker jeelink Adapter",
+        "title":                    "Jeelink Lacrosse Adapter",
+        "desc":                     "ioBroker Jeelink Lacrosse Adapter",
         "platform":                 "Javascript/Node.js",
         "mode":                     "daemon",
-        "loglevel":                 "debug",
+        "loglevel":                 "info",
         "license":                  "MIT",
         "icon":                     "jeelab_logo.png",
-        "extIcon":                  "https://raw.githubusercontent.com/kleinerDrache/ioBroker.jeelink/master/admin/jeelab_logo.png",
-        "keywords":                 ["jeelink", "LaCrosse"],
+        "extIcon":                  "https://raw.githubusercontent.com/kleinerDrache/ioBroker.Leelink/master/admin/jeelab_logo.png",
+        "keywords":                 ["Jeelink", "LaCrosse"],
         "type":                     "hardware",
         "readme":                   "https://github.com/kleinerDrache/ioBroker.Lacrosse/blob/master/README.md"
     },
