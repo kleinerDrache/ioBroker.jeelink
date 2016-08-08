@@ -49,6 +49,11 @@ adapter.on('ready', function () {
 
 function main() {
 
+    var options = {
+    serialport:     adapter.config.serialport || '/dev/ttyUSB0',
+    baudrate:       adapter.config.baudrate   || 57600,
+    };
+
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
 
@@ -101,7 +106,7 @@ function main() {
                 type: 'state',
                 common: {
                     "name":     "Battery Low",
-                    "type":     "number",
+                    "type":     "boolean",
                     "role":     "value.lowBatt",
                 },
                 native: {}
@@ -117,12 +122,6 @@ function main() {
             });
         }
 	
-        }
-    }
-
-    var options = {
-        serialport:     adapter.config.serialport || '/dev/ttyUSB0',
-        baudrate:       adapter.config.baudrate   || 57600,
     };
 
     sp.open(function (error) {
@@ -173,4 +172,3 @@ function main() {
     // in this template all states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
 }
-
