@@ -26,6 +26,8 @@ to be done in io-package.json
 - define the type of sensor
 
 TODO:
+
+
 Changelog:
 0.0.2
 - Adding LowBat Value
