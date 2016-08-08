@@ -1,6 +1,6 @@
 {
     "common": {
-        "name":                     "Lacrosse",
+        "name":                     "LaCrosse",
         "version":                  "0.0.2",
         "title":                    "Lacrosse Adapter",
         "desc":                     "ioBroker Lacrosse Adapter",
@@ -12,7 +12,7 @@
         "extIcon":                  "https://raw.githubusercontent.com/kleinerDrache/ioBroker.LaCrosse/master/admin/jeelab_logo.png",
         "keywords":                 ["Jeelink", "LaCrosse"],
         "type":                     "hardware",
-        "readme":                   "https://github.com/kleinerDrache/ioBroker.Lacrosse/blob/master/README.md"
+        "readme":                   "https://github.com/kleinerDrache/ioBroker.LaCrosse/blob/master/README.md"
     },
     "native": {
         "serialport": "/dev/ttyUSB0",
