@@ -1,6 +1,6 @@
 ![Logo](admin/jeelab_logo.png)
-# ioBroker.jeelink
-=================
+# ioBroker.Lacrosse
+===================
 
 This is an adapter for ioBroker to integrate RFM12B/RFM69 via Jeelink.
 The JeeLink Firmware iss locatet in Admin Dir. Flash on Linux with the Following Command on Console in the Firmware Dir:
@@ -37,7 +37,7 @@ Changelog:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2015 @@Author@@<@@email@@>
+Copyright (c) 2015 @@kleinerDrache@@<@@timlieber75@gmail.com@@>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

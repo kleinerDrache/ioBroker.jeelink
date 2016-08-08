@@ -17,12 +17,14 @@
 
     // Dictionary (systemDictionary is global variable from adapter-settings.js)
     systemDictionary = {
-        "jeelink adapter settings": {"de": "jeelink Adapter Einstellung", "ru": "Настройки jeelink Драйвера"},
-        "test1":                    {"en": "Test 1", "de": "Test 1", "ru": "Тест 1"},
-        "test2":                    {"en": "Test 2", "de": "Test 2", "ru": "Тест 2"},
-        "on save adapter restarts with new config immediately": {
-            "de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
-            "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
+        "jeelink adapter settings":
+            {"de": "jeelink Adapter Einstellung", 
+             "ru": "Настройки jeelink Драйвера"
+        },
+
+        "on save adapter restarts with new config immediately": 
+            {"de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
+             "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
         }
     };
 
@@ -66,24 +68,24 @@
         <td><h3 class="translate">jeelink adapter settings</h3></td>
     </tr></table>
     
-    "serialport": "/dev/ttyUSB0",
-    "baudrate":   57600
+    <!--"serialport": "/dev/ttyUSB0",
+    "baudrate":   57600-->
 
 
     <table>
         <tr>
             <td class="translate">Serial port</td>
-            <td><input type="text" id="serialport" class="value"/></td>
+            <td><input type="text" id="serialport" class="value" id="serialport"/></td>
         </tr>
         <tr>
             <td class="translate">Baud rate</td>
-            <td><input type="text" id="baudrate" class="value" size="5"/></td>
+            <td><input type="text" id="baudrate" class="value" size="5" id="baudrate"/></td>
         </tr>
         <tr>
     </table>
     
     <p>
-        <span class="translate">Sensor ID:</span> <input class="value" id="SID1"/><br>
+        <span class="translate">Sensor ID:</span> <input class="value" id="SID"/><br>
     </p>
 
     <p class="translate">on save adapter restarts with new config immediately</p>

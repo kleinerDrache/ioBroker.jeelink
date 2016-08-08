@@ -1,41 +1,29 @@
 {
     "common": {
-        "name": "jeelink",
-        "version": "0.0.2",
-        "title": "jeelink adapter",
-        "desc": "ioBroker jeelink Adapter",
-        "platform": "Javascript/Node.js",
-        "mode": "daemon",
-        "license": "MIT",
-        "keywords": [
-            "jeelink",
-            "openenergy",
-            "RFM",
-            "emonTH",
-            "LaCrosse"
-        ],
-        "type": "hardware",
-        "icon": "jeelab_logo.png",
-        "extIcon": "https://raw.githubusercontent.com/kleinerDrache/ioBroker.jeelink/master/admin/jeelab_logo.png",
-        "readme": "https://github.com/kleinerDrache/ioBroker.Lacrosse/blob/master/README.md",
-        "loglevel": "debug"
+        "name":                     "jeelink",
+        "version":                  "0.0.2",
+        "title":                    "jeelink adapter",
+        "desc":                     "ioBroker jeelink Adapter",
+        "platform":                 "Javascript/Node.js",
+        "mode":                     "daemon",
+        "loglevel":                 "debug",
+        "license":                  "MIT",
+        "icon":                     "jeelab_logo.png",
+        "extIcon":                  "https://raw.githubusercontent.com/kleinerDrache/ioBroker.jeelink/master/admin/jeelab_logo.png",
+        "keywords":                 ["jeelink", "LaCrosse"],
+        "type":                     "hardware",
+        "readme":                   "https://github.com/kleinerDrache/ioBroker.Lacrosse/blob/master/README.md"
     },
     "native": {
         "serialport": "/dev/ttyUSB0",
         "baudrate": 57600,
-        "sensors": {
-            "12": {
-                "room": [
-                    "Garten"
-                ],
-                "stype": [
-                    "LaCrosse"
-                ]
-            }
+        "sensors": {"12": {"stype": ["LaCrosse"]}
         },
-        "objects": [
+
+    "objects": [
         ],
-        "instanceObjects": [
+
+    "instanceObjects": [
         ]
     }
 }

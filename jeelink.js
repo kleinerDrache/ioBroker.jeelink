@@ -1,14 +1,10 @@
-/* jshint -W097 */
-// jshint strict:false
-/* jslint node: true */
 "use strict";
 
 var serialport = require("serialport");
 var SerialPort = serialport.SerialPort; // localize object constructor
-var sp = new SerialPort("/dev/ttyUSB0", {baudrate:57600, parser: serialport.parsers.readline('\r\n')});
+var sp = new SerialPort(adapter.config.serialport, {baudrate:57600, parser: serialport.parsers.readline('\r\n')});
 
 
-// you have to require the utils module and call adapter function
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 
 
@@ -62,7 +58,7 @@ function main() {
             adapter.setObject('LaCrosse_' + anz, {
                 type: 'channel',
                 common: {
-                    name: 'LaCrosse ' + obj[anz].room,
+                    name: 'LaCrosse ',
                     role: 'sensor'
                 },
                 native: {
@@ -74,140 +70,53 @@ function main() {
             adapter.setObject('LaCrosse_' + anz + '.temp', {
                 type: 'state',
                 common: {
-                    "name": "Temperature",
-                    "type": "number",
-                    "unit": "°C",
-                    "min": -50,
-                    "max": 50,
-                    "read": true,
-                    "write": false,
-                    "role": "value.temperature",
-                    "desc": "Temperature"
+                    "name":     "Temperature",
+                    "type":     "number",
+                    "unit":     "°C",
+                    "min":      -50,
+                    "max":      50,
+                    "read":     true,
+                    "write":    false,
+                    "role":     "value.temperature",
+                    "desc":     "Temperature"
                 },
                 native: {}
             });
             adapter.setObject('LaCrosse_' + anz + '.humid', {
                 type: 'state',
                 common: {
-                    "name": "Humidity",
-                    "type": "number",
-                    "unit": "%",
-                    "min": 0,
-                    "max": 100,
-                    "read": true,
-                    "write": false,
-                    "role": "value.humidity",
-                    "desc": "Humidity"
+                    "name":     "Humidity",
+                    "type":     "number",
+                    "unit":     "%",
+                    "min":      0,
+                    "max":      100,
+                    "read":     true,
+                    "write":    false,
+                    "role":     "value.humidity",
+                    "desc":     "Humidity"
                 },
                 native: {}
             });
             adapter.setObject('LaCrosse_' + anz + '.lowBatt', {
                 type: 'state',
                 common: {
-                    "name": "Battery Low",
-                    "type": "boolean",
-                    "role": "value.lowBatt",
+                    "name":     "Battery Low",
+                    "type":     "number",
+                    "role":     "value.lowBatt",
                 },
                 native: {}
             });
             adapter.setObject('LaCrosse_' + anz + '.newBatt', {
                 type: 'state',
                 common: {
-                    "name": "Battery New",
-                    "type": "boolean",
-                    "role": "value.newBatt",
+                    "name":     "Battery New",
+                    "type":     "boolean",
+                    "role":     "value.newBatt",
                 },
                 native: {}
             });
         }
-	else if(obj[anz].stype=="waterMote"){
-            adapter.setObject('waterMote_' + anz, {
-                type: 'channel',
-                common: {
-                    name: 'waterMote ' + obj[anz].room,
-                    role: 'sensor'
-                },
-                native: {
-                    "addr": anz
-                }
-            });
-            adapter.log.info('RFM12B setting up object = waterMote ' + anz);
-
-            adapter.setObject('waterMote_' + anz + '.cw_mom', {
-                type: 'state',
-                common: {
-                    "name": "Cold Water",
-                    "type": "number",
-                    "unit": "l",
-                    "min": 0,
-                    "max": 100,
-                    "read": true,
-                    "write": false,
-                    "role": "value",
-                    "desc": "Cold Water"
-                },
-                native: {}
-            });
-            adapter.setObject('waterMote_' + anz + '.cw_cum', {
-                type: 'state',
-                common: {
-                    "name": "Cold Water",
-                    "type": "number",
-                    "unit": "m3",
-                    "min": 0,
-                    "max": 10000,
-                    "read": true,
-                    "write": false,
-                    "role": "value",
-                    "desc": "Cold Water counter"
-                },
-                native: {}
-            });
-            adapter.setObject('waterMote_' + anz + '.ww_mom', {
-                type: 'state',
-                common: {
-                    "name": "Warm Water",
-                    "type": "number",
-                    "unit": "l",
-                    "min": 0,
-                    "max": 100,
-                    "read": true,
-                    "write": false,
-                    "role": "value",
-                    "desc": "Warm Water"
-                },
-                native: {}
-            });
-            adapter.setObject('waterMote_' + anz + '.cw_cum', {
-                type: 'state',
-                common: {
-                    "name": "Warm Water",
-                    "type": "number",
-                    "unit": "m3",
-                    "min": 0,
-                    "max": 10000,
-                    "read": true,
-                    "write": false,
-                    "role": "value",
-                    "desc": "Warm Water counter"
-                },
-                native: {}
-            });
-            adapter.setObject('waterMote_' + anz + '.batt', {
-                type: 'state',
-                common: {
-                    "name": "Battery",
-                    "type": "number",
-                    "unit": "V",
-                    "min": 0,
-                    "max": 4,
-                    "read": true,
-                    "write": false,
-                    "role": "value.battery",
-                    "desc": "Battery"
-                },
-                native: {}
-            });
+	
         }
     }
 
@@ -256,24 +165,6 @@ function main() {
                         adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.temp', {val: ((((buf.readIntLE(2))*256)+(buf.readIntLE(3))-1000)/10), ack: true});
                         adapter.setState('LaCrosse_'+ (buf.readIntLE(0)) +'.humid', {val: (buf.readIntLE(4) & 0x7f), ack: true});
                     }
-                    /* Eine weitere Abfrage ist nur dann notwendig wenn andere Datensätze gelesen werden 
-
-                    else if(tmp[2]=='21' || tmp[2]=='22'){
-                        //we are expecting data in form \"OK nodeid data1 data2 etc
-                        var tmpp=tmp.splice(3,12);
-                        adapter.log.info('splice:'+tmpp);
-                        var buf = new Buffer(tmpp);
-                        adapter.log.info('cw_mom:'+ (buf.readInt16LE(0))/10);
-                        adapter.setState('waterMote_'+ tmp[2] +'.cw_mom', {val: (buf.readInt16LE(0))/10, ack: true});
-                        adapter.log.info('cw counter: ' + (buf.readInt16LE(4))/10);
-                        adapter.setState('waterMote_'+ tmp[2] +'.cw_cum', {val: (buf.readInt16LE(4))/10, ack: true});
-                        adapter.log.info('ww_mom:'+ (buf.readInt16LE(6))/10);
-                        adapter.setState('waterMote_'+ tmp[2] +'.ww_mom', {val: (buf.readInt16LE(6))/10, ack: true});
-                        adapter.log.info('ww counter: ' + (buf.readInt16LE(8))/10);
-                        adapter.setState('waterMote_'+ tmp[2] +'.ww_cum', {val: (buf.readInt16LE(8))/10, ack: true});
-                        adapter.log.info('Voltage: ' + (buf.readInt16LE(10))/10);
-                        adapter.setState('waterMote_'+ tmp[2] +'.batt', {val: (buf.readInt16LE(10))/10, ack: true});
-                    } */
                 }
             });
         }
@@ -281,22 +172,5 @@ function main() {
 
     // in this template all states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
-
-    /**
-     *   setState examples
-     *
-     *   you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-     *
-     */
-
-    // the variable testVariable is set to true as command (ack=false)
-    adapter.setState('testVariable', true);
-
-    // same thing, but the value is flagged "ack"
-    // ack should be always set to true if the value is received from or acknowledged from the target system
-    adapter.setState('testVariable', {val: true, ack: true});
-
-    // same thing, but the state is deleted after 30s (getState will return null afterwards)
-    adapter.setState('testVariable', {val: true, ack: true, expire: 30});
 }
 

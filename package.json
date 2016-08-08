@@ -1,23 +1,23 @@
 {
   "name": "iobroker.jeelink",
   "version": "0.0.2",
-  "description": "ioBroker jeelink Adapter",
+  "description": "ioBroker Jeelink LaCrosse Adapter",
   "author": {
     "name": "@@kleinerDrache@@",
-    "email": "@@email@@"
+    "email": "@@timlieber75@gmail.com@@"
   },
   "contributors": [
     {
-      "name": "@@Author@@",
-      "email": "@@email@@"
+      "name": "@@kleinerDrache@@",
+      "email": "@@timlieber75@gmail.com@@"
     }
   ],
-  "homepage": "https://github.com/kleinerDrache/ioBroker.jeelink",
+  "homepage": "https://github.com/kleinerDrache/ioBroker.LaCrosse",
   "license": "MIT",
-  "keywords": ["ioBroker", "jeelink", "RFM", "LaCrosse" ],
+  "keywords": ["ioBroker", "jeelink", "LaCrosse" ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kleinerDrache/ioBroker.jeelink"
+    "url": "https://github.com/kleinerDrache/ioBroker.LaCrosse"
   },
   "dependencies": {
     "serialport": "2.0.3"
@@ -34,7 +34,7 @@
       "grunt-exec": "^0.4.6"
   },
   "bugs": {
-    "url": "https://github.com/foxthefox/ioBroker.jeelink/issues"
+    "url": "https://github.com/foxthefox/ioBroker.Lacrosse/issues"
   },
   "main": "jeelink.js",
   "readmeFilename": "README.md"
